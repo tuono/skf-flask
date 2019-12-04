@@ -60,7 +60,7 @@
         <div id="sidebar" class="nav-collapse ">
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
-                <li  *ngIf="isLoggedin"[style.background-color]="getProjectStyle()" class="">
+                <li  *ngIf="isLoggedin" [style.background-color]="getProjectStyle()" class="">
                     <a routerLink="/project-list" (click)="ResetAll(); ProjectsShow()" id="5" class="primairy">
                         <i class="fa fa-book"></i>
                         <span id="1">Manage projects</span>
@@ -79,7 +79,7 @@
                 <li [style.background-color]="getChecklistStyle()" class="sub-menu">
                     <a (click)="CheckShow()" id="7" class="primairy" href="javascript:;">
                         <i class="fa fa-list-alt"></i>
-                        <span id="7">Checklist options</span>
+                        <span id="7">Checklists</span>
                     </a>
                     <ul *ngIf="check" class="sub"  style="display:block;">
                         <li><a routerLink="/checklist" id="7">View checklists</a></li>
