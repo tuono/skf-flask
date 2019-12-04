@@ -28,7 +28,6 @@ def update_kb_item(kb_id, data):
 def create_kb_item(data, category_id):
     log("User requested creating a new kb item", "LOW", "PASS")
     val_alpha_num_special(data.get('title'))
-
     content = data.get('content')
     title = data.get('title')
     
@@ -39,7 +38,6 @@ def create_kb_item(data, category_id):
         kb_item.checklist_category_id = category_id
         db.session.add(kb_item)
         db.session.commit()
-
     except:
         db.session.rollback()
         raise

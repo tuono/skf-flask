@@ -18,16 +18,14 @@ def update_code_item(code_id, data):
     except:
         db.session.rollback()
         raise
-
     return {'message': 'Code example item successfully updated'}
+
 
 def create_code_item(data, category_id):
     log("User requested creating a new kb item", "LOW", "PASS")
-    
     val_alpha_num_special(data.get('title'))
     val_alpha_num(data.get('code_lang'))
     val_num(category_id)
-
     title = data.get('title')
     content = data.get('content')
     code_lang = data.get('code_lang')
@@ -39,8 +37,7 @@ def create_code_item(data, category_id):
     except:
         db.session.rollback()
         raise
-
-    return {'message': 'KB item successfully created'} 
+    return {'message': 'Code example item successfully created'} 
 
 def delete_code_item(code_id, user_id):
     log("User deleted code item", "MEDIUM", "PASS")
@@ -54,8 +51,7 @@ def delete_code_item(code_id, user_id):
     except:
         db.session.rollback()
         raise
-        
-    return {'message': 'code item successfully deleted'}
+    return {'message': 'Code item successfully deleted'}
 
 def get_code_items(category_id):
     log("User requested list of code items", "LOW", "PASS")

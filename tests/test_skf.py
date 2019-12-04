@@ -631,6 +631,29 @@ class TestRestPlusApi(unittest.TestCase):
         self.assertEqual(response_dict['items'][0]['title'], "Unit test title update")
 
 
+    def test_create_code(self):
+        """Test if the create code items call is working"""
+        jwt = self.login('admin', 'admin')        
+        payload = {'code_lang': 'test', 'content': 'Unit test content create', 'title': 'Unit test title create'}
+        headers = {'content-type': 'application/json', 'Authorization': jwt}
+        response = self.client.put('/api/code/new/1', data=json.dumps(payload), headers=headers)
+        self.assertEqual(response.status_code, 200)
+        response_dict = json.loads(response.data.decode('utf-8'))
+        self.assertEqual(response_dict['message'], "Code example item successfully created")
+        response = self.client.get('/api/code/items/1')
+        self.assertEqual(response.status_code, 200)
+
+
+    def test_delete_code(self):
+        """Test if the delete code item call is working"""
+        jwt = self.login('admin', 'admin') 
+        headers = {'content-type': 'application/json', 'Authorization': jwt}
+        response = self.client.delete('/api/code/delete/100', headers=headers)
+        self.assertEqual(response.status_code, 200)
+        response_dict = json.loads(response.data.decode('utf-8'))
+        self.assertEqual(response_dict['message'], "Code item successfully deleted")
+
+
     def test_get_description_item(self):
         """Test if the description call is working"""
         payload = {"question": "what is xss?", "question_option": 0, "question_lang": "string"}
