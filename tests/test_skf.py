@@ -203,7 +203,7 @@ class TestRestPlusApi(unittest.TestCase):
         """Test if the get all checklist types call is working"""
         jwt = self.login('admin', 'admin') 
         headers = {'content-type': 'application/json', 'Authorization': jwt}
-        response = self.client.get('/api/checklist/types', headers=headers)
+        response = self.client.get('/api/checklist/types/1', headers=headers)
         self.assertEqual(response.status_code, 200)
         response_dict = json.loads(response.data.decode('utf-8'))
         self.assertEqual(response_dict['items'][0]['title'], 'Architecture, Design and Threat Modeling Requirements')
@@ -215,7 +215,7 @@ class TestRestPlusApi(unittest.TestCase):
         jwt = self.login('admin', 'admin') 
         headers = {'content-type': 'application/json', 'Authorization': jwt}
         payload = {"description": "This is a checklist type description", "name": "Custom security list", "visibility": 1}
-        response = self.client.put('/api/checklist/create/type', data=json.dumps(payload), headers=headers)
+        response = self.client.put('/api/checklist/create/type/1', data=json.dumps(payload), headers=headers)
         self.assertEqual(response.status_code, 200)
         response_dict = json.loads(response.data.decode('utf-8'))
         self.assertEqual(response_dict['message'], "Checklist type successfully created")
@@ -307,7 +307,7 @@ class TestRestPlusApi(unittest.TestCase):
 
     def test_get_kb(self):
         """Test if the get kb items call is working"""
-        response = self.client.get('/api/kb/items')
+        response = self.client.get('/api/kb/items/1')
         self.assertEqual(response.status_code, 200)
         response_dict = json.loads(response.data.decode('utf-8'))
         self.assertEqual(response_dict['items'][0]['title'], "use me for a header")
@@ -330,7 +330,7 @@ class TestRestPlusApi(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         response_dict = json.loads(response.data.decode('utf-8'))
         self.assertEqual(response_dict['message'], "KB item successfully updated")
-        response = self.client.get('/api/kb/items')
+        response = self.client.get('/api/kb/items/1')
         self.assertEqual(response.status_code, 200)
         response_dict = json.loads(response.data.decode('utf-8'))
         self.assertEqual(response_dict['items'][0]['title'], "Unit test title update")
@@ -341,7 +341,7 @@ class TestRestPlusApi(unittest.TestCase):
         jwt = self.login('admin', 'admin')        
         payload = {'content': 'Unit test content new', 'title': 'Unit test title new'}
         headers = {'content-type': 'application/json', 'Authorization': jwt}
-        response = self.client.put('/api/kb/new', data=json.dumps(payload), headers=headers)
+        response = self.client.put('/api/kb/new/1', data=json.dumps(payload), headers=headers)
         self.assertEqual(response.status_code, 200)
         response_dict = json.loads(response.data.decode('utf-8'))
         self.assertEqual(response_dict['message'], "KB item successfully created")
@@ -602,7 +602,7 @@ class TestRestPlusApi(unittest.TestCase):
 
     def test_get_code(self):
         """Test if the get code items call is working"""
-        response = self.client.get('/api/code/items')
+        response = self.client.get('/api/code/items/1')
         self.assertEqual(response.status_code, 200)
         response_dict = json.loads(response.data.decode('utf-8'))
         self.assertNotEqual(response_dict['items'][0]['title'], "")
@@ -625,7 +625,7 @@ class TestRestPlusApi(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         response_dict = json.loads(response.data.decode('utf-8'))
         self.assertEqual(response_dict['message'], "Code example item successfully updated")
-        response = self.client.get('/api/code/items')
+        response = self.client.get('/api/code/items/1')
         self.assertEqual(response.status_code, 200)
         response_dict = json.loads(response.data.decode('utf-8'))
         self.assertEqual(response_dict['items'][0]['title'], "Unit test title update")
