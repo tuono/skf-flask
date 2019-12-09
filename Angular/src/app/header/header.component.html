@@ -60,7 +60,7 @@
         <div id="sidebar" class="nav-collapse ">
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
-                <li  *ngIf="isLoggedin" [style.background-color]="getProjectStyle()" class="">
+                <li *ngIf="canEdit" [style.background-color]="getProjectStyle()" class="">
                     <a routerLink="/project-list" (click)="ResetAll(); ProjectsShow()" id="5" class="primairy">
                         <i class="fa fa-book"></i>
                         <span id="1">Manage projects</span>

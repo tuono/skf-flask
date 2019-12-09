@@ -5,6 +5,8 @@ import { Knowledgebase } from '../models/knowledgebase';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CategoryService } from '../services/category.service';
 import { Category } from '../models/category';
+import { AppSettings } from '../globals';
+import * as JWT from 'jwt-decode';
 
 @Component({
   selector: 'app-knowledgebase',
@@ -20,12 +22,17 @@ export class KnowledgebaseComponent implements OnInit {
   public queryString: string;
   public categories: Category[];
   public category_id: number;
+  public canEdit: boolean;
 
   get formControls() { return this.knowledgebaseForm.controls; }
 
   constructor(public _knowledgeService: KnowledgebaseService, private categoryService: CategoryService, private modalService: NgbModal, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    if (AppSettings.AUTH_TOKEN) {
+      let decodedJWT = JWT(AppSettings.AUTH_TOKEN);
+      this.canEdit = decodedJWT.privilege.includes("edit");
+    }
     this.knowledgebaseForm = this.formBuilder.group({
       title: ['', Validators.required],
       content: ['', Validators.required]

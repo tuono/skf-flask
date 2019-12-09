@@ -4,14 +4,15 @@ from skf.database import db
 from skf.database.checklists_kb import ChecklistKB
 from skf.database.questions import Question
 from skf.database.checklists_results import ChecklistResult
-from skf.database.question_results import QuestionResult
 from skf.api.security import log, val_num, val_alpha, val_alpha_num, val_alpha_num_special
+
 
 def get_questions(checklists_type):
     log("User requested list of questions", "LOW", "PASS")
     val_num(checklists_type)
     result = Question.query.filter(Question.checklist_type == checklists_type).paginate(1, 500, False)
     return result
+
 
 def store_questions(checklist_type, maturity, data):
     log("User stored new sprint question list", "MEDIUM", "PASS")
@@ -62,6 +63,7 @@ def store_questions(checklist_type, maturity, data):
         db.session.commit()
     return {'message': 'Sprint successfully created'}
 
+
 def new_question(data):
     log("User created new sprint question item", "MEDIUM", "PASS")
     val_alpha_num(data.get('question'))
@@ -71,6 +73,7 @@ def new_question(data):
     db.session.add(sprint)
     db.session.commit()
     return {'message': 'New Question successfully created'}
+
 
 def update_question(id_question, data):
     log("User updated sprint question item", "MEDIUM", "PASS")
@@ -85,6 +88,7 @@ def update_question(id_question, data):
     db.session.add(sprint)
     db.session.commit()
     return {'message': 'Question successfully updated'}
+
 
 def delete_question(id_question):
     log("User deleted question", "MEDIUM", "PASS")

@@ -78,15 +78,14 @@
 <p id="n9" class="stm run hide_run"><a href="#n9">9</a></p>
 <p id="n10" class="stm run hide_run"><a href="#n10">10</a></p>
 <p id="n11" class="stm run hide_run"><a href="#n11">11</a></p>
-<p id="n12" class="pln"><a href="#n12">12</a></p>
+<p id="n12" class="stm run hide_run"><a href="#n12">12</a></p>
 <p id="n13" class="stm run hide_run"><a href="#n13">13</a></p>
-<p id="n14" class="stm run hide_run"><a href="#n14">14</a></p>
-<p id="n15" class="pln"><a href="#n15">15</a></p>
+<p id="n14" class="pln"><a href="#n14">14</a></p>
+<p id="n15" class="stm run hide_run"><a href="#n15">15</a></p>
 <p id="n16" class="stm run hide_run"><a href="#n16">16</a></p>
 <p id="n17" class="stm run hide_run"><a href="#n17">17</a></p>
 <p id="n18" class="stm run hide_run"><a href="#n18">18</a></p>
-<p id="n19" class="stm run hide_run"><a href="#n19">19</a></p>
-<p id="n20" class="pln"><a href="#n20">20</a></p>
+<p id="n19" class="pln"><a href="#n19">19</a></p>
 
             </td>
             <td class="text">
@@ -101,15 +100,14 @@
 <p id="t9" class="stm run hide_run">    <span class="nam">name</span> <span class="op">=</span> <span class="nam">db</span><span class="op">.</span><span class="nam">Column</span><span class="op">(</span><span class="nam">db</span><span class="op">.</span><span class="nam">Text</span><span class="op">,</span> <span class="nam">nullable</span><span class="op">=</span><span class="key">False</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t10" class="stm run hide_run">    <span class="nam">description</span> <span class="op">=</span> <span class="nam">db</span><span class="op">.</span><span class="nam">Column</span><span class="op">(</span><span class="nam">db</span><span class="op">.</span><span class="nam">Text</span><span class="op">,</span> <span class="nam">nullable</span><span class="op">=</span><span class="key">False</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t11" class="stm run hide_run">    <span class="nam">visibility</span> <span class="op">=</span> <span class="nam">db</span><span class="op">.</span><span class="nam">Column</span><span class="op">(</span><span class="nam">db</span><span class="op">.</span><span class="nam">Boolean</span><span class="op">,</span> <span class="nam">nullable</span><span class="op">=</span><span class="key">False</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t12" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t13" class="stm run hide_run">    <span class="nam">checklist_category_id</span> <span class="op">=</span> <span class="nam">db</span><span class="op">.</span><span class="nam">Column</span><span class="op">(</span><span class="nam">db</span><span class="op">.</span><span class="nam">Integer</span><span class="op">,</span> <span class="nam">db</span><span class="op">.</span><span class="nam">ForeignKey</span><span class="op">(</span><span class="str">"checklist_category.id"</span><span class="op">)</span><span class="op">,</span> <span class="nam">nullable</span><span class="op">=</span><span class="key">True</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t14" class="stm run hide_run">    <span class="nam">checklist_category</span> <span class="op">=</span> <span class="nam">db</span><span class="op">.</span><span class="nam">relationship</span><span class="op">(</span><span class="str">"ChecklistCategory"</span><span class="op">,</span> <span class="nam">backref</span><span class="op">=</span><span class="nam">db</span><span class="op">.</span><span class="nam">backref</span><span class="op">(</span><span class="str">'checklist_types'</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t15" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t16" class="stm run hide_run">    <span class="key">def</span> <span class="nam">__init__</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">name</span><span class="op">,</span> <span class="nam">description</span><span class="op">,</span> <span class="nam">visibility</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t17" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">name</span> <span class="op">=</span> <span class="nam">name</span><span class="strut">&nbsp;</span></p>
-<p id="t18" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">description</span> <span class="op">=</span> <span class="nam">description</span><span class="strut">&nbsp;</span></p>
-<p id="t19" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">visibility</span> <span class="op">=</span> <span class="nam">visibility</span><span class="strut">&nbsp;</span></p>
-<p id="t20" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t12" class="stm run hide_run">    <span class="nam">checklist_category_id</span> <span class="op">=</span> <span class="nam">db</span><span class="op">.</span><span class="nam">Column</span><span class="op">(</span><span class="nam">db</span><span class="op">.</span><span class="nam">Integer</span><span class="op">,</span> <span class="nam">db</span><span class="op">.</span><span class="nam">ForeignKey</span><span class="op">(</span><span class="str">"checklist_category.id"</span><span class="op">)</span><span class="op">,</span> <span class="nam">nullable</span><span class="op">=</span><span class="key">True</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t13" class="stm run hide_run">    <span class="nam">checklist_category</span> <span class="op">=</span> <span class="nam">db</span><span class="op">.</span><span class="nam">relationship</span><span class="op">(</span><span class="str">"ChecklistCategory"</span><span class="op">,</span> <span class="nam">backref</span><span class="op">=</span><span class="nam">db</span><span class="op">.</span><span class="nam">backref</span><span class="op">(</span><span class="str">'checklist_types'</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t14" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t15" class="stm run hide_run">    <span class="key">def</span> <span class="nam">__init__</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">name</span><span class="op">,</span> <span class="nam">description</span><span class="op">,</span> <span class="nam">visibility</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t16" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">name</span> <span class="op">=</span> <span class="nam">name</span><span class="strut">&nbsp;</span></p>
+<p id="t17" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">description</span> <span class="op">=</span> <span class="nam">description</span><span class="strut">&nbsp;</span></p>
+<p id="t18" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">visibility</span> <span class="op">=</span> <span class="nam">visibility</span><span class="strut">&nbsp;</span></p>
+<p id="t19" class="pln"><span class="strut">&nbsp;</span></p>
 
             </td>
         </tr>
@@ -120,7 +118,7 @@
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.5.2</a>,
-            created at 2019-12-04 08:43
+            created at 2019-12-09 21:04
         </p>
     </div>
 </div>

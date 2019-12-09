@@ -15,7 +15,6 @@ from skf.database.lab_items import LabItem
 from skf.database.logs import Log
 from skf.database.project_sprints import ProjectSprint
 from skf.database.projects import Project
-from skf.database.question_results import QuestionResult
 
 
 def load_initial_data():
@@ -115,7 +114,7 @@ def load_initial_data():
         db.session.add(checklist)
         db.session.commit()
         
-        
+
         '''
         Questionaire for ASVS
         '''
@@ -1188,7 +1187,7 @@ def load_initial_data():
         db.session.add(c)
         db.session.commit()
 
-        c = ChecklistKB('3.5.3', 'Verify that stateless session tokens use digital signatures, encryption, and other countermeasures to protect against tampering, enveloping, replay, null cipher, and key substitution attacks.', 3, False, 345, 2)
+        c = ChecklistKB('3.5.3', 'Verify that stateless session tokens use digital signatures, encryption, and other countermeasures to protect against tampering, enveloping, replay, null cipher, and key substitution attacks.', 3, False, 13, 2)
         c.question_id = 24
         c.kb_id = 297
         db.session.add(c)
@@ -2172,7 +2171,7 @@ def load_initial_data():
         db.session.add(c)
         db.session.commit()
         
-        c = ChecklistKB('14.2.2', 'Verify that all unneeded features, documentation, samples, configurations are removed, such as sample applications, platform documentation, and default or example users.', 141, False, 1002, 1);
+        c = ChecklistKB('14.2.2', 'Verify that all unneeded features, documentation, samples, configurations are removed, such as sample applications, platform documentation, and default or example users.', 14, False, 1002, 1);
         c.question_id = 66
         c.kb_id = 283
         db.session.add(c)
@@ -2286,6 +2285,59 @@ def load_initial_data():
         db.session.add(c)
         db.session.commit()
         
+
+
+
+
+
+
+        #Todo remove when we have real MASVS data
+        checklist = ChecklistType(name='Mobile bla Verification Requirements', description='test woop', visibility=1)
+        checklist.checklist_category_id = 2
+        db.session.add(checklist)
+        db.session.commit()
+
+        checklist = ChecklistType(name='Mobile foo Verification requirements', description='woop woop', visibility=1)
+        checklist.checklist_category_id = 2
+        db.session.add(checklist)
+        db.session.commit()
+
+        q = Question('Question mobile bla', 15)
+        db.session.add(q)
+        db.session.commit()
+
+        q = Question('Question mobile foo', 16)
+        db.session.add(q)
+        db.session.commit()
+
+        c = ChecklistKB('1.0', 'Design mobile Requirements', 15, False, None, 1);
+        c.question_id = None
+        c.kb_id = 1
+        db.session.add(c)
+        db.session.commit()
+
+        c = ChecklistKB('1.0', 'Design mobile Requirements', 16, False, None, 2);
+        c.question_id = None
+        c.kb_id = 1
+        db.session.add(c)
+        db.session.commit()
+
+        c = ChecklistKB('1.1.1', 'Verify the use of a secure software development.', 15, False, None, 1);
+        c.question_id = 73
+        c.kb_id = 10
+        db.session.add(c)
+        db.session.commit()
+
+        c = ChecklistKB('1.1.2', 'Verify the use of a secure device.', 16, False, None, 2);
+        c.question_id = 74
+        c.kb_id = 20
+        db.session.add(c)
+        db.session.commit()
+
+
+
+
+
         db.session.add(LabItem('Path traversal (LFI)','https://owasp-skf.gitbook.io/asvs-write-ups/kbid-1-filename-injection', 1))
         db.session.commit()
         
@@ -2416,6 +2468,18 @@ def load_initial_data():
         db.session.commit()
 
         db.session.add(LabItem('Session puzzeling','https://owasp-skf.gitbook.io/asvs-write-ups/kbid-250-session-puzzling', 3))
+        db.session.commit()
+
+        db.session.add(LabItem('GraphQL Introspection','https://owasp-skf.gitbook.io/asvs-write-ups/kbid-285-graphql-introspection', 1))
+        db.session.commit()
+
+        db.session.add(LabItem('GraphQL IDOR','https://owasp-skf.gitbook.io/asvs-write-ups/kbid-285-graphql-idor', 1))
+        db.session.commit()
+
+        db.session.add(LabItem('GraphQL DoS','https://owasp-skf.gitbook.io/asvs-write-ups/kbid-285-graphql-dos', 2))
+        db.session.commit()
+
+        db.session.add(LabItem('GraphQL Injections','https://owasp-skf.gitbook.io/asvs-write-ups/kbid-285-graphql-injections', 3))
         db.session.commit()
 
         db.session.commit()

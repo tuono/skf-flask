@@ -50,7 +50,6 @@ from skf.api.checklist.endpoints.checklist_type_create import ns as checklist_na
 from skf.api.checklist.endpoints.checklist_type_update import ns as checklist_namespace
 from skf.api.checklist.endpoints.checklist_type_delete import ns as checklist_namespace
 from skf.api.checklist.endpoints.checklist_type_items import ns as checklist_namespace
-from skf.api.checklist.endpoints.checklist_type_items_with_filter import ns as checklist_namespace
 from skf.api.checklist.endpoints.checklist_items_questions import ns as checklist_namespace
 from skf.api.checklist_category.endpoints.checklist_category_create import ns as checklist_category
 from skf.api.checklist_category.endpoints.checklist_category_delete import ns as checklist_category

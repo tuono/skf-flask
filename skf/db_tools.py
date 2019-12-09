@@ -32,28 +32,26 @@ def clear_db():
         db.session.rollback()
         raise
 
+
 def init_db(testing=False):
     """Initializes the database.""" 
     clear_db()
     print("Initializing the database")
     db.create_all()
     db.session.commit()
+    init_md_code_examples()
+    init_md_knowledge_base()
+    load_initial_data()
 
-    if testing == True:
-        load_test_data()
-    else:
-        init_md_code_examples()
-        init_md_knowledge_base()
-        load_initial_data()
 
 def update_db():
     """Update the database."""
     KBItem.query.delete()
     CodeItem.query.delete()
     db.session.commit()
-
     init_md_code_examples()
     init_md_knowledge_base()
+
 
 def init_md_knowledge_base():
     """Converts markdown knowledge-base items to DB."""
@@ -74,13 +72,10 @@ def init_md_knowledge_base():
                     item.checklist_category_id = 1
                     db.session.add(item)
                     db.session.commit()
-
                 except IntegrityError as e:
                     raise
-
         print('Initialized the markdown knowledge-base.')
         return True
-
     except:
         raise
 
@@ -105,13 +100,10 @@ def init_md_code_examples():
                         item.checklist_category_id = 1
                         db.session.add(item)
                         db.session.commit()
-
                     except IntegrityError as e:
                         print(e)
                         pass
-
         print('Initialized the markdown code-examples.')
         return True
-
     except:
         raise

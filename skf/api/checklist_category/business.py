@@ -2,10 +2,10 @@ from skf.database import db
 from skf.api.security import log, val_num, val_float, val_alpha_num, val_alpha_num_special
 from skf.database.checklist_category import ChecklistCategory
 from skf.database.checklists_results import ChecklistResult
-from skf.database.question_results import QuestionResult
 from skf.database.questions import Question
 from sqlalchemy import desc, asc
 import sys
+
 
 def get_checklist_category_item(checklist_category_id):
     log("User requested specific checklist category item", "LOW", "PASS")
@@ -13,11 +13,13 @@ def get_checklist_category_item(checklist_category_id):
     result = ChecklistCategory.query.filter((ChecklistCategory.id == checklist_category_id)).one()
     return result
 
+
 def get_checklist_categories():
     log("User requested list checklist categories", "LOW", "PASS")
     result = ChecklistCategory.query.order_by(desc(ChecklistCategory.name)).paginate(1, 500, False)
     return result
     
+
 def create_checklist_category(data):
     log("User requested create a new checklist category", "LOW", "PASS")
     val_alpha_num_special(data.get('name'))
@@ -32,6 +34,7 @@ def create_checklist_category(data):
         db.rollback()
         raise
     return {'message': 'Checklist category successfully created'} 
+
 
 def update_checklist_category(id, data):
     log("User requested update checklist category", "LOW", "PASS")
@@ -50,6 +53,7 @@ def update_checklist_category(id, data):
         db.session.rollback()
         raise
     return {'message': 'Checklist category successfully updated'} 
+
 
 def delete_checklist_category(checklist_category_id):
     log("User deleted checklist item", "MEDIUM", "PASS")
